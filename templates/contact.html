@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Contact us
+{% endblock title %}
+{% block body %}
+{% if messages %}
+    {% for message in messages %}
+        
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">{{ message }}        
+        
+      </div>
+    {% endfor %}
+    {% endif %}
+<img src="https://source.unsplash.com/1200x350/?phone,contact" class='d-block w-100' alt="...">
+<div class="container  " >
+    <form method="POST" action="/contact"> 
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email"name="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+          </div>
+
+        <div class="form-group">
+          <label for="desc">Tell us In Detailed Manner</label>
+          <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <div class="container">
+            <button type="submit"class='btn btn-primary my-2'>Submit</button>
+        </div>
+      </form>
+
+</div>
+{% endblock body %}
